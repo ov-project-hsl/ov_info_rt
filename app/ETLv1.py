@@ -24,7 +24,7 @@ import argparse
 
 
 def connection():
-    con = psycopg2.connect(dbname='ov', user='postgres', host='172.17.0.2', password='postgres')
+    con = psycopg2.connect(dbname='ov', user='postgres', host='172.18.0.2', password='password')
     cur = con.cursor()
 
     return con,cur
