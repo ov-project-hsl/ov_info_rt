@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    image: timescale/timescaledb-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+      PGDATA: /var/lib/postgresql/data/pg_data
+    volumes:
+      - ./data:/var/lib/postgresql/data/pg_data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: password
+    restart: unless-stopped
+
+  ov_info_rt:
+    image: landscaperichard/ov_info_rt
+    tty: true
