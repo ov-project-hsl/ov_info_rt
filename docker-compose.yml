@@ -23,6 +23,3 @@ services:
       PGADMIN_DEFAULT_PASSWORD: password
     restart: unless-stopped
 
-  ov_info_rt:
-    image: landscaperichard/ov_info_rt
-    tty: true
